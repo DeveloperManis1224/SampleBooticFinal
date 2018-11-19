@@ -52,11 +52,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/btn_fb_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
+                <!--<com.facebook.login.widget.LoginButton-->
+                    <!--android:id="@+id/btn_fb_login"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:visibility="gone" />-->
 
                 <FrameLayout
                     android:id="@+id/btn_facebook"

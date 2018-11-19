@@ -477,6 +477,7 @@ public class MainActivity extends ActivityBaseCartIcon{
 
                     case R.id.nav_sub:
                         Intent intentSub = new Intent(MainActivity.this, FilterCategory.class);
+                        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
                         startActivity(intentSub);
                         drawerLayout.closeDrawers();
                         break;

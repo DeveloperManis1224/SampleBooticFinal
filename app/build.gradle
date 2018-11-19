@@ -40,17 +40,17 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.picasso:picasso:2.71828'
     //implementation 'com.awesomedroidapps:inappstoragereader:1.0.2'
-    implementation 'com.google.firebase:firebase-core:11.6.0'
-    implementation 'com.google.firebase:firebase-auth:11.6.0'
-    implementation 'com.google.android.gms:play-services-auth:11.6.0'
+   // implementation 'com.google.firebase:firebase-core:11.6.0'
+   // implementation 'com.google.firebase:firebase-auth:11.6.0'
+  //  implementation 'com.google.android.gms:play-services-auth:11.6.0'
     //  implementation 'com.facebook.android:facebook-login:[4,5)'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.braintreepayments.api:drop-in:3.+'
     implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
-    implementation 'com.google.android.gms:play-services-ads:11.6.0'
+   // implementation 'com.google.android.gms:play-services-ads:11.6.0'
     implementation 'com.android.volley:volley:1.1.1'
     //    implementation 'cz.msebera.android:httpclient:4.3.6'
     implementation files('libs/android-async-http-1.4.9.jar')
     implementation files('libs/httpclient-4.3.6.jar')
 }
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'

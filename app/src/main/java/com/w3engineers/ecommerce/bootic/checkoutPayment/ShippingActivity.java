@@ -19,9 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+
 import com.w3engineers.ecommerce.bootic.R;
 import com.w3engineers.ecommerce.bootic.Util.Constants;
 import com.w3engineers.ecommerce.bootic.Util.CustomSharedPrefs;
@@ -37,7 +35,7 @@ public class ShippingActivity extends AppCompatActivity
 
     android.support.v7.widget.Toolbar toolbar;
 
-    AdView mAdView;
+   // AdView mAdView;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -71,10 +69,10 @@ public class ShippingActivity extends AppCompatActivity
         // ADDMOB
 
 
-        mAdView=(AdView)findViewById(R.id.adView);
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+//        mAdView=(AdView)findViewById(R.id.adView);
+//        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
 
         totalprice = getIntent().getStringExtra(Constants.TOTAL_PRICE);
