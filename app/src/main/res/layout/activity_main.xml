@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dl_navigation_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".main.MainActivity"
+    tools:openDrawer="start">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/vp_slider_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:focusableInTouchMode="true">
+
+                    </android.support.v4.view.ViewPager>
+
+                    <!--START OF DOTS CONATAINER-->
+                    <LinearLayout
+                        android:id="@+id/layout_slider_main_dots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_x"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/fab_margin_half">
+
+                    </LinearLayout>
+                    <!--END OF DOTS CONATAINER-->
+
+                </RelativeLayout>
+
+                <!--START OF CATEGORY RECYCLERVIEW-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/fab_margin_half"
+                    android:layout_marginLeft="@dimen/fab_margin_half"
+                    android:layout_marginTop="@dimen/recylerview_margin_y"
+                    android:text="@string/category_popular"
+                    android:textSize="@dimen/heading_mideum" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_product_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/recylerview_margin_x"
+                    android:layout_marginRight="@dimen/recylerview_margin_x">
+
+                </android.support.v7.widget.RecyclerView>
+                <!--END OF CATEGORY RECYCLERVIEW-->
+
+
+                <!--START OF POPULAR PRODUCT SLIDER-->
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/fab_margin_half"
+                    android:layout_marginLeft="@dimen/fab_margin_half"
+                    android:layout_marginTop="@dimen/fab_margin_half"
+                    android:text="@string/popular_product"
+                    android:textSize="@dimen/heading_mideum" />
+-->
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_popular_products"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/recylerview_margin_x"
+                    android:layout_marginRight="@dimen/recylerview_margin_x">
+
+                </android.support.v4.view.ViewPager>
+                <!--END OF POPULAR PRODUCT SLIDER-->
+
+                <!--START OF RECENT PRODUCT GRID RECYLERVIEW-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/fab_margin_half"
+                    android:layout_marginLeft="@dimen/fab_margin_half"
+                    android:layout_marginTop="@dimen/fab_margin_half"
+                    android:text="@string/recent_product"
+                    android:textSize="@dimen/heading_mideum" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_p_detail_product_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/recylerview_margin_y"
+                    android:layout_marginLeft="@dimen/recylerview_margin_x"
+                    android:layout_marginRight="@dimen/recylerview_margin_x">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <!--END OF RECENT PRODUCT GRID RECYLERVIEW-->
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/menu_navigation_view" />
+
+</android.support.v4.widget.DrawerLayout>
+

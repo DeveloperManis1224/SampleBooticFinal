@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/fab_margin"
+    android:paddingRight="@dimen/fab_margin"
+    android:paddingTop="@dimen/fab_margin_double"
+    android:paddingBottom="@dimen/fab_margin_double">
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/iv_menu_profile_image"-->
+        <!--android:layout_width="85dp"-->
+        <!--android:layout_height="85dp"-->
+        <!--android:src="@mipmap/logo"-->
+        <!--app:civ_border_width="2dp"-->
+        <!--app:civ_border_color="@color/colorPrimaryDark"/>-->
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@mipmap/logo"
+        android:padding="3dp"
+        android:contentDescription="@null"
+        android:id="@+id/iv_menu_profile_image"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_gravity="center_vertical">
+        
+        <TextView
+            android:id="@+id/menu_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/heading_semi_big"
+            android:textStyle="bold" />
+<!--
+        <TextView
+            android:id="@+id/menu_profile_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/heading_small" /> -->
+    </LinearLayout>
+</LinearLayout>

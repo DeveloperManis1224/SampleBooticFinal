@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_menu_home"/>
+
+    <item
+        android:id="@+id/nav_account"
+        android:title="My Account"
+        android:icon="@drawable/ic_menu_user_black" />
+
+    <item
+        android:id="@+id/nav_category"
+        android:title="Categories"
+        android:icon="@drawable/ic_menu_category_black" />
+    <item
+        android:id="@+id/nav_sub"
+        android:title="Nairjara Silks"
+        android:icon="@drawable/clothes"/>
+    <item
+        android:id="@+id/nav_orders"
+        android:title="My Orders"
+        android:icon="@drawable/ic_menu_orders_black" />
+
+    <item
+        android:id="@+id/nav_cart"
+        android:title="Shopping Cart"
+        android:icon="@drawable/ic_menu_cart_black" />
+
+    <item
+        android:id="@+id/nav_favourites"
+        android:title="My Favourite"
+        android:icon="@drawable/ic_menu_category_black" />
+
+   <!-- <item
+        android:id="@+id/nav_coupon_codes"
+        android:title="My Coupon Codes"
+        android:icon="@drawable/ic_menu_offer" />-->
+
+</menu>

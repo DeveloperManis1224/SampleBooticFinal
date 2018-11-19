@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">Ayucraze</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_register">Register</string>
+    <string name="title_product_detail">Product Detail</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_checkout">Checkout</string>
+    <string name="title_sign_in">Sign In</string>
+    <string name="title_orders">Orders</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_shipping">Shipping</string>
+    <string name="title_confirm_payment">Confirm</string>
+
+    <string name="facebook_app_id">175430279965220 </string>
+    <string name="fb_login_protocol_scheme">fb175430279965220 </string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lorem_epsam">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        Aperiam eaque ipsa quae ab illo inventore veritatis.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="register_terms_writing">By registering you agree that you have read and accepted our Terms and Conditions</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+
+    <string name="close">Close</string>
+    <string name="open">Open</string>
+
+
+    <!--SHIPPING FRAGMENT-->
+    <string name="shipping_top_text">Which shipping parter do you like?</string>
+    <string name="shipping_dhl">DHL</string>
+    <string name="shipping_ups">UPS</string>
+    <string name="shipping_fedex">FEDEX</string>
+    <string name="shipping_cost_dhl">No additional cost</string>
+    <string name="shipping_cost_fedex">Additional cost $20</string>
+
+    <!--PAYMENT METHOD FRAGMENT-->
+    <string name="payment_top_text">How do you wish to pay?</string>
+    <string name="payment_creditcard">Credit Card</string>
+    <string name="payment_paypal">Paypal</string>
+    <string name="payment_master_card">Master Card</string>
+
+
+    <!--PAYMENT INFO FRAGMENT-->
+    <string name="payment_info_card_no">Credit Card No</string>
+    <string name="payment_info_expiration">Expires</string>
+    <string name="payment_info_cvv">CVV-CODE</string>
+    <!--<string name="payment_finish_order">Pay with Paypal/Credit Card</string>-->
+    <string name="payment_finish_order">Pay Now</string>
+    <string name="cash_on_delivery">Cash On Delivery</string>
+
+
+    <!--CONFIRM ADDRESS FRAGMENT-->
+    <string name="shipping_address">Shipping Address</string>
+    <string name="confirm_name">Name : John Doe</string>
+    <string name="confirm_address">Address : John doe\'s address</string>
+    <string name="confirm_city">City : Khulna</string>
+    <string name="confirm_zip">Zip: 9000</string>
+    <string name="confirm_country">Country: Bangladesh</string>
+    <string name="confirm_sipping_company">Shipping With : FedEx</string>
+
+    <!--CONFIRM PAYMENT FRAGMENT-->
+    <string name="payment_method">Payment Method : Paypal</string>
+    <string name="confirm_payment_card_no">Card No : 343432334</string>
+    <string name="confirm_payment_expires">Exp : 23 Jan, 2020</string>
+    <string name="confirm_payment_cvv">CVV : 2334</string>
+
+
+    <!--HOMEPAGE-->
+    <string name="category_popular">Popular Category</string>
+    <string name="popular_product">Popular Products</string>
+    <string name="recent_product">Recent Products</string>
+
+    <!--PRODUCT DETAIL-->
+    <string name="read_more">READ MORE</string>
+    <string name="read_less">READ LESS</string>
+
+
+    <!--FORM INPUTS-->
+    <string name="input_first_name">First Name</string>
+    <string name="input_last_name">Last Name</string>
+    <string name="input_address_1">Address Line 1</string>
+    <string name="input_address_2">Address Line 2</string>
+    <string name="input_city">City</string>
+    <string name="input_zip">Zip Code</string>
+    <string name="input_state">State</string>
+    <string name="input_country">Country</string>
+    <string name="btn_next">Next Step</string>
+    <string name="btn_create_account">Create Account</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_sign_in_with_email">Sign in With Email</string>
+    <string name="btn_sign_in_with_google">Sign in With Gmail</string>
+    <string name="btn_sign_in_with_facebook">Sign in With Facebook</string>
+    <string name="btn_add_to_cart">Add to Cart</string>
+
+    <string name="dont_hv_account">Don\'t have an account?</string>
+    <string name="already_hv_account">Already have an account?</string>
+    <string name="forgot_password">Forgot Password?</string>
+
+    <!--PROFILE ACTIVITY-->
+    <string name="my_orders">My Orders</string>
+    <string name="my_favourites">My Favourites</string>
+    <string name="my_shipping_address">My Shipping Address</string>
+    <string name="edit_address">Edit Address</string>
+    <string name="save_address">Save Address</string>
+
+    <string name="confirm_address_heading">Payment Info</string>
+
+
+</resources>

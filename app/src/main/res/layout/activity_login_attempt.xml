@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/EcommerceTheme"
+    tools:context=".userLogin.LoginAttemptActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_signin_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tpColorBlack" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--START OF LOGIN AREA-->
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clipToPadding="false"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/fab_margin_double"
+                android:paddingLeft="@dimen/fab_margin"
+                android:paddingRight="@dimen/fab_margin"
+                android:paddingTop="@dimen/fab_margin_double">
+
+                <ImageView
+                    android:id="@+id/iv_fb_profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tv_fb_login_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/btn_fb_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:id="@+id/btn_facebook"
+                    style="@style/BtnWithIconLeftContainer"
+                    android:layout_marginBottom="@dimen/fab_margin_half"
+                    android:visibility="gone"
+                    android:background="@drawable/btn_round_small_facebook">
+
+                    <Button
+                        android:id="@+id/btn_facebook_inner"
+                        style="@style/BtnWithIconLeft"
+
+                        android:text="@string/btn_sign_in_with_facebook" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/btn_google"
+                    style="@style/BtnWithIconLeftContainer"
+                    android:visibility="gone"
+                    android:background="@drawable/btn_round_small_google">
+
+                    <Button
+                        android:id="@+id/btn_google_inner"
+                        style="@style/BtnWithIconLeft"
+                        android:text="@string/btn_sign_in_with_google" />
+
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/btn_sign_attempt_login"
+                    style="@style/BtnPrimary"
+                    android:text="@string/btn_sign_in_with_email" />
+
+            </LinearLayout>
+            <!--END OF LOGIN AREA-->
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

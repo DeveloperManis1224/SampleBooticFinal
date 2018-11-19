@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userProfile.UserOrderActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_cart_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <include
+        layout="@layout/toolbar_layout"
+        android:layout_width="match_parent"
+        android:background="@null"
+        android:layout_height="?attr/actionBarSize" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ListView
+        android:id="@+id/lv_ordered_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/recylerview_margin_y"
+        android:paddingBottom="@dimen/recylerview_margin_y"
+        android:paddingLeft="@dimen/recylerview_margin_x"
+        android:paddingRight="@dimen/recylerview_margin_x"
+        android:layout_below="@id/abl_cart_appbar"
+        android:clipToPadding="false">
+
+    </ListView>
+
+</RelativeLayout>
