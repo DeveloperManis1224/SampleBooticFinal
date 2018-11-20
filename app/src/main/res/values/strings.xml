@@ -115,6 +115,7 @@
     <string name="save_address">Save Address</string>
 
     <string name="confirm_address_heading">Payment Info</string>
+    <string name="notification_error_ssl_cert_invalid">SSL error occurred. Would you like to proceed?</string>
 
 
 </resources>
