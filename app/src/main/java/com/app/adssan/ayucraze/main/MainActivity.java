@@ -2,6 +2,7 @@ package com.app.adssan.ayucraze.main;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -24,16 +25,19 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -41,10 +45,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.app.adssan.ayucraze.Adapter.ExpandableListAdapter;
 import com.app.adssan.ayucraze.Util.CustomSharedPrefs;
 import com.app.adssan.ayucraze.baseActivity.ActivityBaseCartIcon;
 
 import com.app.adssan.ayucraze.category.FilterCategory;
+import com.app.adssan.ayucraze.model.MenuModel;
 import com.app.adssan.ayucraze.model.User;
 import com.app.adssan.ayucraze.prductGrid.ProductRecylerViewAdapter;
 import com.app.adssan.ayucraze.userLogin.LoginAttemptActivity;
@@ -68,6 +74,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends ActivityBaseCartIcon{
 
@@ -104,6 +112,11 @@ public class MainActivity extends ActivityBaseCartIcon{
 
     DataSource dataSource;
 
+    ExpandableListAdapter expandableListAdapter;
+    ExpandableListView expandableListView;
+    List<MenuModel> headerList = new ArrayList<>();
+    HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -130,7 +143,7 @@ public class MainActivity extends ActivityBaseCartIcon{
        /* DATABASE*/
         dataSource = new DataSource(this);
         dataSource.open();
-
+        expandableListView = findViewById(R.id.expandableListView);
         CustomSharedPrefs.setFavProductsInPref(this,dataSource);
 
         //dataSource.deleteTebale(DBFavouriteProducts.TABLE_NAME);
@@ -206,6 +219,9 @@ public class MainActivity extends ActivityBaseCartIcon{
 
         //START RECYLERVIEW PRODUCT GRID
 
+        prepareMenuData();
+        populateExpandableList();
+
         recyclerViewProduct = findViewById(R.id.rv_p_detail_product_grid);
 
         //END FOR RECYLER PRODUCT VIEW
@@ -232,6 +248,14 @@ public class MainActivity extends ActivityBaseCartIcon{
 
     }
 
+    public void onNairajaSilksClick(View v)
+    {
+        Intent intentSub = new Intent(MainActivity.this, FilterCategory.class);
+        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+        startActivity(intentSub);
+        drawerLayout.closeDrawers();
+    }
+
 
     private BroadcastReceiver productGridBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -242,6 +266,7 @@ public class MainActivity extends ActivityBaseCartIcon{
                 productGridList = new ArrayList<>(Arrays.asList(products));
                 setingRecylerView();
             }catch (Exception e){
+                Log.e("ERROR_Prouct",""+e.getMessage());
                 Toast.makeText(MainActivity.this, "Couldn't connect to server.", Toast.LENGTH_LONG).show();
             }
         }
@@ -255,6 +280,7 @@ public class MainActivity extends ActivityBaseCartIcon{
                 categoryList = new ArrayList<>(Arrays.asList(productCategories));
                 settingHorizontalCategoryList();
             }catch (Exception e){
+                Log.e("ERROR_category",""+e.getMessage());
                 Toast.makeText(MainActivity.this, "Couldn't connect to server.", Toast.LENGTH_LONG).show();
             }
         }
@@ -419,6 +445,10 @@ public class MainActivity extends ActivityBaseCartIcon{
         loggedInUser = CustomSharedPrefs.getLoggedInUser(MainActivity.this);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nv_main_nav);
+
+
+
+
         View header = navigationView.getHeaderView(0);
         TextView tvName = header.findViewById(R.id.menu_profile_name);
         ImageView ivProfileImage = header.findViewById(R.id.iv_menu_profile_image);
@@ -513,6 +543,204 @@ public class MainActivity extends ActivityBaseCartIcon{
         /*END OF NAVIGATION DRAWER */
 
     }
+
+
+    private void prepareMenuData() {
+        MenuModel menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_home), "Home", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_user_black), "My Account", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_category_black), "Categories", true, true, ""); //Menu of Java Tutorials
+        headerList.add(menuModel);
+//        List<MenuModel> childModelsList = new ArrayList<>();
+//        MenuModel childModel = new MenuModel("1. HOARDINGS / BILLBOARDS", false, false, "1");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("2. UNIPOLES / MONOPOLES", false, false, "2");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("3. CENTRALMEDIAN / POLE KIOSKS", false, false, "3");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("4. BUS SHELTERS / BUS BAYS", false, false, "4");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("5. ARCHES / GANTRIES / PANELS", false, false, "5");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("6. FOOT OVER BRIDGES", false, false, "6");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("7. TRAFFIC SIGNS / TRAFFIC SHELTERS", false, false, "7");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("8. AUTO / CAB / BUS / TRAIN", false, false, "8");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("9. OTHER OOH", false, false, "9");
+//        childModelsList.add(childModel);
+//        if (menuModel.hasChildren) {
+//            Log.d("API123", "here");
+//            childList.put(menuModel, childModelsList);
+//        }
+//        childModelsList = new ArrayList<>();
+
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_orders_black), "My Orders", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_cart_black), "Shopping Cart", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_category_black), "My Favourite", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+//        menuModel = new MenuModel(getResources().getDrawable(R.drawable.clothes), "Nairjara Silks", true, true, ""); //Menu of Python Tutorials
+//        headerList.add(menuModel);
+
+
+//        if (session.getPreferences(HomeActivity.this, Constants.LOGIN_STATUS).equalsIgnoreCase(Constants.LOGIN)) {
+//            menuModel = new MenuModel(getResources().getDrawable(R.drawable.logout_icon), "Logout", true, true, ""); //Menu of Python Tutorials
+//            headerList.add(menuModel);
+//        }
+//        if (menuModel.hasChildren) {
+//            childList.put(menuModel, childModelsList);
+//        }
+    }
+
+    private void populateExpandableList() {
+
+        expandableListAdapter = new ExpandableListAdapter(this, headerList, childList);
+        expandableListView.setAdapter(expandableListAdapter);
+
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                if (headerList.get(groupPosition).isGroup) {
+                    //Toast.makeText(HomeActivity.this, ""+headerList.get(groupPosition).getName(), Toast.LENGTH_SHORT).show();
+
+                    if (headerList.get(groupPosition).getName().equalsIgnoreCase("Home")) {
+                        Intent intentMain = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intentMain);
+                        drawerLayout.closeDrawers();
+                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Account")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(MainActivity.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+                        }
+                    }  else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Categories")) {
+                        Intent intentCategory = new Intent(MainActivity.this, CategoryActivity.class);
+                        startActivity(intentCategory);
+                        drawerLayout.closeDrawers();
+                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Orders")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(MainActivity.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intentOrder = new Intent(MainActivity.this, UserOrderActivity.class);
+                            startActivity(intentOrder);
+                        }
+                    }
+                    else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Shopping Cart")) {
+                        Intent intentCart = new Intent(MainActivity.this, CartActivity.class);
+                        startActivity(intentCart);
+                    }
+                    else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Favourite")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(MainActivity.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intentFav = new Intent(MainActivity.this, UserFavActivity.class);
+                            startActivity(intentFav);
+                        }
+//                    }else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Nairjara Silks")) {
+//                        Intent intentSub = new Intent(MainActivity.this, FilterCategory.class);
+//                        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+//                        startActivity(intentSub);
+//                        drawerLayout.closeDrawers();
+                    }
+//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Contact Us")) {
+//                        startActivity(new Intent(MainActivity.this, ContactUs.class));
+//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("About Us")) {
+//                        startActivity(new Intent(MainActivity.this, AboutUs.class));
+//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Logout")) {
+//
+////                        AlertDialog.Builder builder1 = new AlertDialog.Builder(HomeActivity.this);
+////                        builder1.setTitle("Logout");
+////                        builder1.setMessage("Are you sure want to Logout?");
+////                        builder1.setCancelable(true);
+////                        builder1.setPositiveButton(
+////                                "Logout",
+////                                new DialogInterface.OnClickListener() {
+////                                    public void onClick(DialogInterface dialog, int id) {
+////                                        dialog.cancel();
+////                                        Toast.makeText(HomeActivity.this, "Logout Successfull", Toast.LENGTH_SHORT).show();
+////                                        session.setPreferences(HomeActivity.this, Constants.LOGIN_STATUS, Constants.LOGOUT);
+////                                        startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+////                                    }
+////                                });
+////                        builder1.setNegativeButton(
+////                                "Cancel",
+////                                new DialogInterface.OnClickListener() {
+////                                    public void onClick(DialogInterface dialog, int id) {
+////                                        dialog.cancel();
+////                                    }
+////                                });
+////                        AlertDialog alert11 = builder1.create();
+////                        alert11.show();
+//                    }
+
+//                    if (!headerList.get(groupPosition).hasChildren) {
+//                        Toast.makeText(HomeActivity.this, ""+headerList.get(groupPosition).getName(), Toast.LENGTH_SHORT).show();
+//                    }
+                }
+
+                return false;
+            }
+        });
+
+//        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+//
+//                if (childList.get(headerList.get(groupPosition)) != null) {
+//                    MenuModel model = childList.get(headerList.get(groupPosition)).get(childPosition);
+//
+//                    // Toast.makeText(HomeActivity.this, "cvcvcvc", Toast.LENGTH_SHORT).show();
+//
+//                    if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("1")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class).
+//                                putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "1"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("2")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "2"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("3")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "3"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("4")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "4"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("5")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "5"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("6")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "6"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("7")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "7"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("8")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "8"));
+//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("9")) {
+//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
+//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "9"));
+//                    }
+////                    if (model.getuId().length() > 0) {
+////                            onBackPressed();
+////                    }
+//                }
+//                return false;
+//            }
+//        });
+    }
+
+
 
     @Override
     public void onBackPressed() {

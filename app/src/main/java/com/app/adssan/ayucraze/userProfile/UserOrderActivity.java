@@ -103,7 +103,7 @@ public class UserOrderActivity extends ActivityBaseCartIcon {
 
     private void getInventories( String inventory_ids){
 
-        String JSON_URL = "http://ayucraze.com/api.php?user_id=" + CustomSharedPrefs.getLoggedInUserId(UserOrderActivity.this);
+        String JSON_URL = "https://ayucraze.com/api.php?user_id=" + CustomSharedPrefs.getLoggedInUserId(UserOrderActivity.this);
         RequestQueue queue = Volley.newRequestQueue(this);
         Log.v("VALUESSSSS",""+"///"+JSON_URL);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, JSON_URL, new Response.Listener<String>() {

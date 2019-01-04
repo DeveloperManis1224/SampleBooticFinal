@@ -2,9 +2,9 @@ package com.app.adssan.ayucraze.Util;
 
 public class Constants {
 
-    public static final String SERVER_PATH = "http://ayucraze.com/admin/public/";
-    public static final String SUCCESS_PATH = "http://ayucraze.com/success.php";
-    public static final String FAILURE_PATH = "http://ayucraze.com/failure.php";
+    public static final String SERVER_PATH = "https://ayucraze.com/admin/public/";
+    public static final String SUCCESS_PATH = "https://ayucraze.com/success.php";
+    public static final String FAILURE_PATH = "https://ayucraze.com/failure.php";
     //public static final String SERVER_PATH = "http://192.168.2.13/bootic-admin/public/";
 
     public static final String PATH_TO_SERVER = SERVER_PATH + "braintree_payment.php";
@@ -15,10 +15,10 @@ public class Constants {
     public static final String CATEGORY_IMAGE_URL = SERVER_PATH + "uploads/categories/";
     public static final String CATEGORY_GRID_URL = SERVER_PATH + "json/categories.php";
 
-    public static final String CATEGORY_GRID_URL1 = "http://ayucraze.com/categoryapi.php";
+    public static final String CATEGORY_GRID_URL1 = "https://ayucraze.com/categoryapi.php";
 
-    public static final String FILTER_GRID_URL = "http://ayucraze.com/api1.php";
-    public static final String PRODUCT_GRID_URL1 = "http://ayucraze.com/api2.php";
+    public static final String FILTER_GRID_URL = "https://ayucraze.com/api1.php";
+    public static final String PRODUCT_GRID_URL1 = "https://ayucraze.com/api2.php";
 
     public static final String PRODUCT_IMAGES_URL = SERVER_PATH + "json/product_images.php";
     public static final String UPDATE_ADDRESS = SERVER_PATH + "json/update_address_by_id.php";

@@ -56,10 +56,10 @@
             android:name=".userProfile.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".checkoutPayment.CheckoutActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+        <!--<activity-->
+            <!--android:name=".checkoutPayment.CheckoutActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden" />-->
         <activity
             android:name=".userLogin.LoginActivity"
             android:screenOrientation="portrait"
@@ -117,7 +117,7 @@
                 <data android:scheme="${applicationId}.braintree" />
             </intent-filter>
         </activity>
-        <activity android:name=".OrderActivity" />
+        <!--<activity android:name=".OrderActivity" />-->
         <activity android:name=".Payumoney.PayUMoneyActivity" />
         <activity android:name=".Payumoney.PaymentStatusActivity" />
         <activity android:name=".category.FilterCategory"/>
