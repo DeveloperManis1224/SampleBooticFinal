@@ -83,7 +83,7 @@ public class CategoryActivity extends ActivityBaseCartIcon{
     RecyclerView recyclerViewCategory;
 
   //  public static String getTypeCategeory="";
-  ExpandableListAdapter expandableListAdapter;
+    ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
@@ -243,98 +243,23 @@ public class CategoryActivity extends ActivityBaseCartIcon{
                             Intent intentFav = new Intent(CategoryActivity.this, UserFavActivity.class);
                             startActivity(intentFav);
                         }
-//                    }else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Nairjara Silks")) {
-//                        Intent intentSub = new Intent(MainActivity.this, FilterCategory.class);
-//                        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
-//                        startActivity(intentSub);
-//                        drawerLayout.closeDrawers();
-                    }
-//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Contact Us")) {
-//                        startActivity(new Intent(MainActivity.this, ContactUs.class));
-//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("About Us")) {
-//                        startActivity(new Intent(MainActivity.this, AboutUs.class));
-//                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Logout")) {
-//
-////                        AlertDialog.Builder builder1 = new AlertDialog.Builder(HomeActivity.this);
-////                        builder1.setTitle("Logout");
-////                        builder1.setMessage("Are you sure want to Logout?");
-////                        builder1.setCancelable(true);
-////                        builder1.setPositiveButton(
-////                                "Logout",
-////                                new DialogInterface.OnClickListener() {
-////                                    public void onClick(DialogInterface dialog, int id) {
-////                                        dialog.cancel();
-////                                        Toast.makeText(HomeActivity.this, "Logout Successfull", Toast.LENGTH_SHORT).show();
-////                                        session.setPreferences(HomeActivity.this, Constants.LOGIN_STATUS, Constants.LOGOUT);
-////                                        startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-////                                    }
-////                                });
-////                        builder1.setNegativeButton(
-////                                "Cancel",
-////                                new DialogInterface.OnClickListener() {
-////                                    public void onClick(DialogInterface dialog, int id) {
-////                                        dialog.cancel();
-////                                    }
-////                                });
-////                        AlertDialog alert11 = builder1.create();
-////                        alert11.show();
-//                    }
 
-//                    if (!headerList.get(groupPosition).hasChildren) {
-//                        Toast.makeText(HomeActivity.this, ""+headerList.get(groupPosition).getName(), Toast.LENGTH_SHORT).show();
-//                    }
+                    }
                 }
 
                 return false;
             }
         });
 
-//        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//            @Override
-//            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//
-//                if (childList.get(headerList.get(groupPosition)) != null) {
-//                    MenuModel model = childList.get(headerList.get(groupPosition)).get(childPosition);
-//
-//                    // Toast.makeText(HomeActivity.this, "cvcvcvc", Toast.LENGTH_SHORT).show();
-//
-//                    if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("1")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class).
-//                                putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "1"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("2")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "2"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("3")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "3"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("4")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "4"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("5")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "5"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("6")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "6"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("7")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "7"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("8")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "8"));
-//                    } else if (childList.get(headerList.get(groupPosition)).get(childPosition).getuId().equalsIgnoreCase("9")) {
-//                        startActivity(new Intent(HomeActivity.this, PrdouctActivity.class)
-//                                .putExtra(Constants.PAGE_FROM, Constants.PAGE_MENU).putExtra(Constants.CATEGORY_ID, "9"));
-//                    }
-////                    if (model.getuId().length() > 0) {
-////                            onBackPressed();
-////                    }
-//                }
-//                return false;
-//            }
-//        });
     }
 
+    public void onNairajaSilksClick(View v)
+    {
+        Intent intentSub = new Intent(CategoryActivity.this, FilterCategory.class);
+        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+        startActivity(intentSub);
+        drawerLayout.closeDrawers();
+    }
 
     private BroadcastReceiver mbroadcastReceiver = new BroadcastReceiver() {
         @Override
