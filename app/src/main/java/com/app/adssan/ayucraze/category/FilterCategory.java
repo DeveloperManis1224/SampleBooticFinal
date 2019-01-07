@@ -26,13 +26,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.adssan.ayucraze.Adapter.ExpandableListAdapter;
 import com.app.adssan.ayucraze.Util.CustomSharedPrefs;
 import com.app.adssan.ayucraze.baseActivity.ActivityBaseCartIcon;
 import com.app.adssan.ayucraze.main.MainActivity;
+import com.app.adssan.ayucraze.model.MenuModel;
 import com.app.adssan.ayucraze.model.User;
 import com.app.adssan.ayucraze.prductGrid.ProductGridActivity;
 import com.app.adssan.ayucraze.userLogin.LoginActivity;
@@ -55,6 +58,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FilterCategory extends ActivityBaseCartIcon{
@@ -81,14 +85,25 @@ public class FilterCategory extends ActivityBaseCartIcon{
     public static String getTypeCategeory="";
 
     private boolean netwotkOK;
+    ExpandableListAdapter expandableListAdapter;
+    ExpandableListView expandableListView;
+    List<MenuModel> headerList = new ArrayList<>();
+    HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
 
-
+    public void onNairajaSilksClick(View v)
+    {
+        Intent intentSub = new Intent(FilterCategory.this, FilterCategory.class);
+        intentSub.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+        startActivity(intentSub);
+        drawerLayout.closeDrawers();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_category);
 
         /*START OF TOOLBAR */
+        expandableListView = findViewById(R.id.expandableListView);
         toolbar = findViewById(R.id.toolbar);
         toobarTitle = findViewById(R.id.toolbar_title);
         toolbarLogo = findViewById(R.id.toolbar_logo);
@@ -122,8 +137,124 @@ public class FilterCategory extends ActivityBaseCartIcon{
             Toast.makeText(this, "Could not connect to internet.", Toast.LENGTH_SHORT).show();
         }
         /*END OF INTENT SERVICES*/
+
+        prepareMenuData();
+        populateExpandableList();
     }
 
+
+    private void prepareMenuData() {
+        MenuModel menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_home), "Home", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_user_black), "My Account", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_category_black), "Categories", true, true, ""); //Menu of Java Tutorials
+        headerList.add(menuModel);
+//        List<MenuModel> childModelsList = new ArrayList<>();
+//        MenuModel childModel = new MenuModel("1. HOARDINGS / BILLBOARDS", false, false, "1");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("2. UNIPOLES / MONOPOLES", false, false, "2");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("3. CENTRALMEDIAN / POLE KIOSKS", false, false, "3");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("4. BUS SHELTERS / BUS BAYS", false, false, "4");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("5. ARCHES / GANTRIES / PANELS", false, false, "5");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("6. FOOT OVER BRIDGES", false, false, "6");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("7. TRAFFIC SIGNS / TRAFFIC SHELTERS", false, false, "7");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("8. AUTO / CAB / BUS / TRAIN", false, false, "8");
+//        childModelsList.add(childModel);
+//        childModel = new MenuModel("9. OTHER OOH", false, false, "9");
+//        childModelsList.add(childModel);
+//        if (menuModel.hasChildren) {
+//            Log.d("API123", "here");
+//            childList.put(menuModel, childModelsList);
+//        }
+//        childModelsList = new ArrayList<>();
+
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_orders_black), "My Orders", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_cart_black), "Shopping Cart", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+        menuModel = new MenuModel(getResources().getDrawable(R.drawable.ic_menu_category_black), "My Favourite", true, true, ""); //Menu of Python Tutorials
+        headerList.add(menuModel);
+//        menuModel = new MenuModel(getResources().getDrawable(R.drawable.clothes), "Nairjara Silks", true, true, ""); //Menu of Python Tutorials
+//        headerList.add(menuModel);
+
+
+//        if (session.getPreferences(HomeActivity.this, Constants.LOGIN_STATUS).equalsIgnoreCase(Constants.LOGIN)) {
+//            menuModel = new MenuModel(getResources().getDrawable(R.drawable.logout_icon), "Logout", true, true, ""); //Menu of Python Tutorials
+//            headerList.add(menuModel);
+//        }
+//        if (menuModel.hasChildren) {
+//            childList.put(menuModel, childModelsList);
+//        }
+    }
+
+    private void populateExpandableList() {
+
+        expandableListAdapter = new ExpandableListAdapter(this, headerList, childList);
+        expandableListView.setAdapter(expandableListAdapter);
+
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                if (headerList.get(groupPosition).isGroup) {
+                    //Toast.makeText(HomeActivity.this, ""+headerList.get(groupPosition).getName(), Toast.LENGTH_SHORT).show();
+
+                    if (headerList.get(groupPosition).getName().equalsIgnoreCase("Home")) {
+                        Intent intentMain = new Intent(FilterCategory.this, MainActivity.class);
+                        startActivity(intentMain);
+                        drawerLayout.closeDrawers();
+                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Account")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(FilterCategory.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intent = new Intent(FilterCategory.this, ProfileActivity.class);
+                            startActivity(intent);
+                        }
+                    }  else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Categories")) {
+                        Intent intentCategory = new Intent(FilterCategory.this, CategoryActivity.class);
+                        startActivity(intentCategory);
+                        drawerLayout.closeDrawers();
+                    } else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Orders")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(FilterCategory.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intentOrder = new Intent(FilterCategory.this, UserOrderActivity.class);
+                            startActivity(intentOrder);
+                        }
+                    }
+                    else if (headerList.get(groupPosition).getName().equalsIgnoreCase("Shopping Cart")) {
+                        Intent intentCart = new Intent(FilterCategory.this, CartActivity.class);
+                        startActivity(intentCart);
+                    }
+                    else if (headerList.get(groupPosition).getName().equalsIgnoreCase("My Favourite")) {
+                        if(loggedInUser == null){
+                            Intent intentLogin = new Intent(FilterCategory.this, LoginAttemptActivity.class);
+                            intentLogin.putExtra(Constants.LOGIN_PREV_ACTIVITY, Constants.LOGIN_PREV_MAIN_ACTIVITY);
+                            startActivity(intentLogin);
+                        }else{
+                            Intent intentFav = new Intent(FilterCategory.this, UserFavActivity.class);
+                            startActivity(intentFav);
+                        }
+
+                    }
+                }
+
+                return false;
+            }
+        });
+
+    }
 
 
     private BroadcastReceiver mbroadcastReceiver = new BroadcastReceiver() {
